@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd0x42r1ueg04"]
+
+[ext_resource type="PackedScene" uid="uid://b36r2vm5mx1qc" path="res://scene/menu_bar_panel.tscn" id="1_5inbm"]
+[ext_resource type="Script" path="res://script/main.gd" id="1_bsh8h"]
+[ext_resource type="PackedScene" uid="uid://bjrx65xpoovyk" path="res://scene/files_manager.tscn" id="2_b6egj"]
+[ext_resource type="PackedScene" uid="uid://d37klk05qjgt2" path="res://scene/viewer.tscn" id="3_45s5l"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bsh8h")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="MenuBarPanel" parent="PanelContainer/VBoxContainer" instance=ExtResource("1_5inbm")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="FilesManager" parent="PanelContainer/VBoxContainer/MarginContainer/HSplitContainer" instance=ExtResource("2_b6egj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Viewer" parent="PanelContainer/VBoxContainer/MarginContainer/HSplitContainer" instance=ExtResource("3_45s5l")]
+unique_name_in_owner = true
+layout_mode = 2
